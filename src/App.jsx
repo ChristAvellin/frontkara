@@ -10,8 +10,8 @@ import LoginPage from "./assets/components/LoginPage";
 import Home from "./assets/pages/Home";
 import RegisterPage from "./assets/components/RegisterPage";
 
-import AdminPage from "./assets/pages/AdminPage";
-import UsersPage from "./assets/pages/UsersPage";
+import AdminPage from "./assets/pages/AdminDashboard";
+import UsersPage from "./assets/pages/UserLibrary";
 import DashboardPage from "./assets/pages/DashboardPage";
 // import Userform from "./assets/components/Userform";
 

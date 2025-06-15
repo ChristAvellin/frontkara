@@ -102,7 +102,7 @@ const RegisterPage = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="row">
-              <div className="input-container ic1">
+              <div className="input-container ic1 mb-8 md:mb-0">
                 <input
                   type="text"
                   name="firstName"
@@ -116,7 +116,7 @@ const RegisterPage = () => {
                 <label className="iLabel" htmlFor="firstname">Prénom</label >
               </div>
 
-              <div className="input-container ic1">
+              <div className="input-container ic1 mt-4 md:mt-0">
                 <input
                   type="text"
                   name="lastName"

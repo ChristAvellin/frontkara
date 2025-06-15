@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink} from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -18,7 +18,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-200 bg-white shadow-sm relative z-10">
+    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-200 bg-white shadow-sm relative z-100">
       {/* Logo */}
       <a href="#" className="flex items-center gap-2">
         <img
@@ -33,9 +33,9 @@ const Navbar = () => {
         <a href="#" className="hover:text-indigo-500 transition">
           Accueil
         </a>
-        <a href="#" className="hover:text-indigo-500 transition">
+        <NavLink to="/user" className="hover:text-indigo-500 transition">
           Catalogue
-        </a>
+        </NavLink>
         <a href="#" className="hover:text-indigo-500 transition">
           Fonctionnalités
         </a>
@@ -55,18 +55,18 @@ const Navbar = () => {
             Mon Compte
           </button>
           {accountDropdownOpen && (
-            <div className=" right-0 mt-2 w-40 bg-white shadow-lg rounded-lg py-2 z-20">
+            <div className="absolute top-full right-0 mt-2 w-40 bg-white shadow-lg rounded-lg py-2 z-20">
               <button
-                onClick={() => navigate("/formuse")}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                onClick={() => navigate("/admin")}
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
               >
-                Se connecter
+                Dashboard
               </button>
               <button
                 onClick={() => navigate("/register")}
                 className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
-                S'inscrire
+                Se Déconnecter
               </button>
             </div>
           )}
