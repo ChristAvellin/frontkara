@@ -3,24 +3,30 @@
 }
 
 .dashboard-title {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #3a5157;
-  text-align: center;
+  text-align: left;
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(to right, #3a5157, #Face6b);
+  background: linear-gradient(to right, #3a5157, #Face6b) center center;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  translate: 0 0;
+  transition: translate .15s ease-in-out;
+}
+
+.sticky .dashboard-title {
+     text-align: left;
+     translate: 1rem 0;
 }
 
 .dashboard-subtitle {
   font-size: 1rem;
   color: #666;
-  text-align: center;
-  margin-bottom: 30px;
+  text-align: left;
 }
 
 .stats-grid {
@@ -256,4 +262,9 @@
   align-items: center;
   font-size: 0.9rem;
   color: #666;
+}
+
+.overlay-modal {
+    background-color: #00000040;
+    transition: background-color .10s ease-in-out;
 }

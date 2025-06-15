@@ -12,9 +12,6 @@ export default function DashboardContent({ songs, artists }) {
 
   return (
     <div className="dashboard-content">
-      <h2 className="dashboard-title">Dashboard</h2>
-      <p className="dashboard-subtitle">Vue d'ensemble de votre plateforme</p>
-      
       {/* Stats Cards */}
       <div className="stats-grid">
         {stats.map((stat, index) => (

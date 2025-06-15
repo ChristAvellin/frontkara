@@ -663,7 +663,7 @@
 // }
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Home, Music, Mic2, Users, Settings, Plus, Search, Edit, Trash2, ChevronDown, ChevronUp, Image as ImageIcon, Grid3X3, List, MoreVertical, Play, Heart, Download, Eye, TrendingUp, Award, Clock, Star, User } from 'lucide-react';
 import AddEditModal from '../components/admin/AddEditModal';
 import SettingsContent from '../components/admin/SettingsContent';
@@ -674,6 +674,8 @@ import DashboardContent from '../components/admin/DashboardContent';
 import Header from '../components/admin/HeaderDashboard';
 import Sidebar from '../components/admin/Sidebar';
 import '../styles/DashboardContent.css';
+import '../styles/Sidebar.css';
+import '../styles/Header.css';
 
 // Main Component
 export default function AdminDashboard() {
@@ -729,6 +731,15 @@ export default function AdminDashboard() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSticky, setIsSticky] = useState(false);
+
+   useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const filteredSongs = songs.filter(song => 
     song.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -781,7 +792,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+    <div className="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Sidebar */}
       <Sidebar 
         activeTab={activeTab}
@@ -792,7 +803,7 @@ export default function AdminDashboard() {
       />
 
       {/* Main Content */}
-      <div className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-72'} overflow-hidden`}>
+      <div className={`main-content ${sidebarCollapsed ? 'collapsed' : ''} w-full flex-1 transition-all duration-300 overflow-y-auto z-30`}>
         <div className="h-full flex flex-col">
           {/* Header */}
           <Header 
@@ -805,6 +816,7 @@ export default function AdminDashboard() {
               setCurrentItem(null);
               setIsAddModalOpen(true);
             }}
+            isSticky={isSticky}
           />
 
           {/* Content Area */}
