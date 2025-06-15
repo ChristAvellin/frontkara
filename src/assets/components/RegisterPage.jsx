@@ -67,7 +67,7 @@ const RegisterPage = () => {
 
       console.log('Registration response:', response.data);
       alert('Inscription réussie ! Bienvenue sur KaraArema !');
-      // navigate('/formuse');
+      navigate('/login', { replace: true });
     } catch (err) {
       if (err.response?.data?.message) {
         setError(err.response.data.message);

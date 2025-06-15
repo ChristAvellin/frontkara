@@ -14,7 +14,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/user", { replace: true });
+      navigate("/home", { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
@@ -31,7 +31,7 @@ const LoginPage = () => {
 
       const { token, user } = res.data;
       login(token, user);
-      navigate("/", { replace: true });
+      navigate("/home", { replace: true });
     } catch (err) {
       setError(err.response?.data?.message || "La connexion a échoué. Veuillez réessayer.");
     } finally {
