@@ -14,7 +14,7 @@ const WelcomePage = () => {
       {/* Background Video */}
       <video
         autoPlay
-        muted
+        // muted
         loop
         className="absolute inset-0 w-full h-full object-cover -z-10"
       >
