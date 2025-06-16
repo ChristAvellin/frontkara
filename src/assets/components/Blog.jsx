@@ -3,29 +3,29 @@ import React from "react";
 const blogPosts = [
   {
     id: 1,
-    title: "Understanding React Components",
+    title: "Les nouveaux talents de la musique béninoise à surveiller",
     summary: "A quick guide to building reusable UI components in React.",
-    image: "https://via.placeholder.com/300x180",
-    author: "Jane Doe",
-    date: "2024-06-01",
+    image: "blo1.jpg",
+    author: "Admin",
+    date: "2025-06-01",
   },
   {
     id: 2,
-    title: "State Management in Modern Apps",
+    title: "Top 10 des chansons béninoises qui font vibrer le pays en ce moment",
     summary:
       "Explore different ways to manage state in your React applications.",
-    image: "https://via.placeholder.com/300x180",
-    author: "John Smith",
-    date: "2024-06-02",
+    image: "blo2.jpg",
+    author: "Admin",
+    date: "2025-06-02",
   },
   {
     id: 3,
-    title: "Hooks: The New Way to Write React",
+    title: "Ces chansons traditionnelles qui font leur retour",
     summary:
       "Learn how React Hooks simplify your code and improve reusability.",
-    image: "https://via.placeholder.com/300x180",
-    author: "Alice Johnson",
-    date: "2024-06-03",
+    image: "blo3.jpg",
+    author: "Admin",
+    date: "2025-06-03",
   },
 ];
 

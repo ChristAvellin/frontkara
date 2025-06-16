@@ -272,3 +272,12 @@
     background-color: #00000040;
     transition: background-color .10s ease-in-out;
 }
+
+.modal-resize {
+    width: 90%;
+    max-width: 800px;
+    height: 90%;
+    max-height: 600px;
+    transition: width .10s ease-in-out, height .10s ease-in-out;
+    overflow-y: scroll;
+}

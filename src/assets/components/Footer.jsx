@@ -3,27 +3,27 @@ import React from "react";
 const App = () => {
   const linkSections = [
     {
-      title: "Quick Links",
-      links: ["Home", "Best Sellers", "Offers & Deals", "Contact Us", "FAQs"],
+      title: "Liens rapides",
+      links: ["Accueil", "", "", "", ""],
     },
     {
-      title: "Need Help?",
+      title: "Besoin d'aide ?",
       links: [
-        "Delivery Information",
-        "Return & Refund Policy",
-        "Payment Methods",
-        "Track your Order",
-        "Contact Us",
+        "",
+        "",
+        "",
+        "",
+        "Nous contacter",
       ],
     },
     {
-      title: "Follow Us",
-      links: ["Instagram", "Twitter", "Facebook", "YouTube"],
+      title: "",
+      links: ["", "", "", ""],
     },
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-700 text-gray-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Main content */}
         <div className="py-8 lg:py-12 border-b border-gray-700">
@@ -36,9 +36,7 @@ const App = () => {
                 alt="KaraArema Logo"
               />
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-sm">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum
-                unde quaerat eveniet cumque accusamus atque qui error quo enim
-                fugiat?
+                
               </p>
             </div>
 
@@ -73,7 +71,7 @@ const App = () => {
         {/* Copyright */}
         <div className="py-4 sm:py-6">
           <p className="text-center text-xs sm:text-sm text-gray-400/80">
-            Copyright 2025 © KaraArema All Right Reserved.
+            Copyright 2025 © KaraArema Tous droits réservés.
           </p>
         </div>
       </div>

@@ -6,38 +6,38 @@ export default function UserLibrary() {
   const [songs, setSongs] = useState([
     {
       id: 1,
-      title: "Bohemian Rhapsody",
-      artist: "Queen",
+      title: "Azodékponlon",
+      artist: "Africando",
       duration: "5:55",
       plays: 12453,
       likes: 8921,
-      image: "https://picsum.photos/300/300?random=1",
+      image: "/Africando.jpg",
       color: "#Face6b",
-      audio: "/songs/bohemian.mp3",
+      audio: "./afric.mp3",
       isLiked: false
     },
     {
       id: 2,
-      title: "Sweet Child O'Mine",
-      artist: "Guns N' Roses",
+      title: "Bèlè",
+      artist: "PePe Oléka",
       duration: "5:56",
       plays: 9872,
       likes: 7654,
-      image: "https://picsum.photos/300/300?random=2",
+      image: "blo2.jpg",
       color: "#30454a",
-      audio: "/songs/sweet-child.mp3",
+      audio: "./audip.mp3",
       isLiked: true
     },
     {
       id: 3,
-      title: "La Vie En Rose",
-      artist: "Édith Piaf",
+      title: "Adjimè",
+      artist: "Danialou",
       duration: "3:07",
       plays: 7563,
       likes: 5432,
-      image: "https://picsum.photos/300/300?random=3",
+      image: "danialou.webp",
       color: "#Face6b",
-      audio: "/songs/vie-en-rose.mp3",
+      audio: "#",
       isLiked: false
     }
   ]);
@@ -201,19 +201,19 @@ export default function UserLibrary() {
             onClick={() => setActiveFilter('all')}
             className={`px-4 py-2 rounded-full ${activeFilter === 'all' ? 'bg-[#30454a] text-white' : 'bg-white text-[#30454a]'}`}
           >
-            All Songs
+            Catalogue de chanson
           </button>
           <button 
             onClick={() => setActiveFilter('popular')}
             className={`px-4 py-2 rounded-full ${activeFilter === 'popular' ? 'bg-[#30454a] text-white' : 'bg-white text-[#30454a]'}`}
           >
-            Most Popular
+            Les plus populaires
           </button>
           <button 
             onClick={() => setActiveFilter('favorites')}
             className={`px-4 py-2 rounded-full ${activeFilter === 'favorites' ? 'bg-[#30454a] text-white' : 'bg-white text-[#30454a]'}`}
           >
-            My Favorites
+            Mes favoris
           </button>
         </div>
 
@@ -309,19 +309,19 @@ export default function UserLibrary() {
                     #
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-[#Face6b] uppercase tracking-wider">
-                    Title
+                    Titre
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-[#Face6b] uppercase tracking-wider">
                     Artist
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-[#Face6b] uppercase tracking-wider">
-                    Duration
+                    Durée
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-[#Face6b] uppercase tracking-wider">
-                    Plays
+                    Auditions
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-[#Face6b] uppercase tracking-wider">
-                    Likes
+                    J'aime
                   </th>
                   {!selectionMode && (
                     <th className="px-6 py-3 text-left text-xs font-medium text-[#Face6b] uppercase tracking-wider">

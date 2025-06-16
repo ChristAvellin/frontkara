@@ -663,6 +663,243 @@
 // }
 
 
+// import { useState, useEffect } from 'react';
+// import { Home, Music, Mic2, Users, Settings, Plus, Search, Edit, Trash2, ChevronDown, ChevronUp, Image as ImageIcon, Grid3X3, List, MoreVertical, Play, Heart, Download, Eye, TrendingUp, Award, Clock, Star, User } from 'lucide-react';
+// import AddEditModal from '../components/admin/AddEditModal';
+// import SettingsContent from '../components/admin/SettingsContent';
+// import UsersContent from '../components/admin/UsersContent';
+// import ArtistsContent from '../components/admin/ArtistsContent';
+// import SongsContent from '../components/admin/SongsContent';
+// import DashboardContent from '../components/admin/DashboardContent';
+// import Header from '../components/admin/HeaderDashboard';
+// import Sidebar from '../components/admin/Sidebar';
+// import '../styles/DashboardContent.css';
+// import '../styles/Sidebar.css';
+// import '../styles/Header.css';
+
+// // Main Component
+// export default function AdminDashboard() {
+//  const [activeTab, setActiveTab] = useState('dashboard');
+//   const [viewMode, setViewMode] = useState('grid');
+//   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+//   const [songs, setSongs] = useState([
+//     { 
+//       id: 1, 
+//       title: "Azo dékponlon", 
+//       artist: "Africando", 
+//       duration: "5:55", 
+//       language: "Fon",
+//       image: "./Africando.jpg",
+//       color: "#Face6b",
+//       plays: 12540,
+//       likes: 892,
+//       trending: true,
+//       song :"./afric.mp3"
+//     },
+//     { 
+//       id: 2, 
+//       title: "Maman Africa", 
+//       artist: "Angélique Kidjo", 
+//       duration: "3:56", 
+//       language: "Yoruba",
+//       image: "./angelik.webp",
+//       color: "#3a5157",
+//       plays: 8234,
+//       likes: 654,
+//       trending: false,
+//       song :"./afric.mp3"
+//     },
+//     { 
+//       id: 3, 
+//       title: "Il n'est jamais trop tard", 
+//       artist: "Gnonas pedro", 
+//       duration: "3:07", 
+//       language: "French",
+//       image: "./gnonnas.jpg",
+//       color: "#Face6b",
+//       plays: 5476,
+//       likes: 423,
+//       trending: true,
+//       song :"./afric.mp3"
+//     }
+//   ]);
+  
+//   const [artists, setArtists] = useState([
+//     { id: 1, name: "Angélique Kidjo", songsCount: 32, image: "./angelik.webp", verified: true, followers: 125000 },
+//     { id: 2, name: "Danialou", songsCount: 28, image: "./dani.webp", verified: true, followers: 98000 },
+//     { id: 3, name: "Zeynab", songsCount: 15, image: "./zey.jpg", verified: false, followers: 67000 }
+//   ]);
+  
+//   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+//   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+//   const [currentItem, setCurrentItem] = useState(null);
+//   const [searchTerm, setSearchTerm] = useState('');
+//   const [isSticky, setIsSticky] = useState(false);
+
+//    useEffect(() => {
+//     const handleScroll = () => {
+//       setIsSticky(window.scrollY > 10);
+//     };
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+// //   const onSubmit = async (data) => {
+// //   try {
+// //     const response = await fetch('/api/songs', {
+// //       method: 'POST',
+// //       body: data,
+// //     });
+// //     const result = await response.json();
+// //     console.log('Succès:', result);
+// //     setIsAddModalOpen(false)
+// //   } catch (error) {
+// //     console.error('Erreur:', error);
+// //   }
+// // };
+
+//   const filteredSongs = songs.filter(song => 
+//     song.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+//     song.artist.toLowerCase().includes(searchTerm.toLowerCase())
+//   );
+
+//   const filteredArtists = artists.filter(artist => 
+//     artist.name.toLowerCase().includes(searchTerm.toLowerCase())
+//   );
+
+//   const handleAddItem = (newItem) => {
+//     if (activeTab === 'songs') {
+//       setSongs([...songs, { 
+//         ...newItem, 
+//         id: songs.length + 1,
+//         image: newItem.image || `https://picsum.photos/400/400?random=${songs.length + 10}`,
+//         color: ['#Face6b', '#3a5157'][Math.floor(Math.random() * 2)],
+//         plays: Math.floor(Math.random() * 10000),
+//         likes: Math.floor(Math.random() * 1000),
+//         trending: Math.random() > 0.5
+//       }]);
+//     } else {
+//       setArtists([...artists, { 
+//         ...newItem, 
+//         id: artists.length + 1, 
+//         songsCount: 0,
+//         image: newItem.image || `https://picsum.photos/400/400?random=${artists.length + 20}`,
+//         verified: Math.random() > 0.5,
+//         followers: Math.floor(Math.random() * 100000)
+//       }]);
+//     }
+//     setIsAddModalOpen(false);
+//   };
+
+//   const handleEditItem = (updatedItem) => {
+//     if (activeTab === 'songs') {
+//       setSongs(songs.map(song => song.id === updatedItem.id ? updatedItem : song));
+//     } else {
+//       setArtists(artists.map(artist => artist.id === updatedItem.id ? updatedItem : artist));
+//     }
+//     setIsEditModalOpen(false);
+//   };
+
+//   const handleDeleteItem = (id) => {
+//     if (activeTab === 'songs') {
+//       setSongs(songs.filter(song => song.id !== id));
+//     } else {
+//       setArtists(artists.filter(artist => artist.id !== id));
+//     }
+//   };
+
+//   return (
+//     <div className="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+//       {/* Sidebar */}
+//       <Sidebar 
+//         activeTab={activeTab}
+//         setActiveTab={setActiveTab}
+//         setViewMode={setViewMode}
+//         collapsed={sidebarCollapsed}
+//         setCollapsed={setSidebarCollapsed}
+//       />
+
+//       {/* Main Content */}
+//       <div className={`main-content ${sidebarCollapsed ? 'collapsed' : ''} w-full flex-1 transition-all duration-300 overflow-y-auto z-30`}>
+//         <div className="h-full flex flex-col">
+//           {/* Header */}
+//           <Header 
+//             activeTab={activeTab}
+//             viewMode={viewMode}
+//             setViewMode={setViewMode}
+//             searchTerm={searchTerm}
+//             setSearchTerm={setSearchTerm}
+//             onAddClick={() => {
+//               setCurrentItem(null);
+//               setIsAddModalOpen(true);
+//             }}
+//             isSticky={isSticky}
+//           />
+
+//           {/* Content Area */}
+//           <div className="flex-1 overflow-y-auto p-6 space-y-6">
+//             {activeTab === 'dashboard' && (
+//               <DashboardContent songs={songs} artists={artists} />
+//             )}
+
+//             {activeTab === 'songs' && (
+//               <SongsContent 
+//                 songs={filteredSongs}
+//                 viewMode={viewMode}
+//                 onEdit={(song) => {
+//                   setCurrentItem(song);
+//                   setIsEditModalOpen(true);
+//                 }}
+//                 onDelete={handleDeleteItem}
+//               />
+//             )}
+
+//             {activeTab === 'artists' && (
+//               <ArtistsContent 
+//                 artists={filteredArtists}
+//                 viewMode={viewMode}
+//                 onEdit={(artist) => {
+//                   setCurrentItem(artist);
+//                   setIsEditModalOpen(true);
+//                 }}
+//                 onDelete={handleDeleteItem}
+//               />
+//             )}
+
+//             {activeTab === 'users' && (
+//               <UsersContent />
+//             )}
+
+//             {activeTab === 'settings' && (
+//               <SettingsContent />
+//             )}
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Modals */}
+//       {isAddModalOpen && (
+//         <AddEditModal 
+//           type={activeTab}
+//           onClose={() => setIsAddModalOpen(false)}
+//           onSubmit={handleAddItem}
+//         />
+//       )}
+
+//       {isEditModalOpen && (
+//         <AddEditModal 
+//           type={activeTab}
+//           item={currentItem}
+//           onClose={() => setIsEditModalOpen(false)}
+//           onSubmit={handleEditItem}
+//         />
+//       )}
+//     </div>
+//   );
+// }
+
+
+
 import { useState, useEffect } from 'react';
 import { Home, Music, Mic2, Users, Settings, Plus, Search, Edit, Trash2, ChevronDown, ChevronUp, Image as ImageIcon, Grid3X3, List, MoreVertical, Play, Heart, Download, Eye, TrendingUp, Award, Clock, Star, User } from 'lucide-react';
 import AddEditModal from '../components/admin/AddEditModal';
@@ -679,61 +916,64 @@ import '../styles/Header.css';
 
 // Main Component
 export default function AdminDashboard() {
- const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('dashboard');
   const [viewMode, setViewMode] = useState('grid');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [songs, setSongs] = useState([
-    { 
-      id: 1, 
-      title: "Bohemian Rhapsody", 
-      artist: "Queen", 
-      duration: "5:55", 
-      language: "English",
-      image: "https://picsum.photos/400/400?random=1",
+    {
+      id: 1,
+      title: "Azo dékponlon",
+      artist: "Africando",
+      duration: "5:55",
+      language: "Fon",
+      image: "./Africando.jpg",
       color: "#Face6b",
       plays: 12540,
       likes: 892,
-      trending: true
+      trending: true,
+      song: "./afric.mp3"
     },
-    { 
-      id: 2, 
-      title: "Sweet Child O'Mine", 
-      artist: "Guns N' Roses", 
-      duration: "5:56", 
-      language: "English",
-      image: "https://picsum.photos/400/400?random=2",
+    {
+      id: 2,
+      title: "Maman Africa",
+      artist: "Angélique Kidjo",
+      duration: "3:56",
+      language: "Yoruba",
+      image: "./angelik.webp",
       color: "#3a5157",
       plays: 8234,
       likes: 654,
-      trending: false
+      trending: false,
+      song: "./afric.mp3"
     },
-    { 
-      id: 3, 
-      title: "La Vie En Rose", 
-      artist: "Édith Piaf", 
-      duration: "3:07", 
+    {
+      id: 3,
+      title: "Il n'est jamais tard",
+      artist: "Gnonas pedro",
+      duration: "3:07",
       language: "French",
-      image: "https://picsum.photos/400/400?random=3",
+      image: "./gnonnas.jpg",
       color: "#Face6b",
       plays: 5476,
       likes: 423,
-      trending: true
+      trending: true,
+      song: "./afric.mp3"
     }
   ]);
-  
+
   const [artists, setArtists] = useState([
-    { id: 1, name: "Queen", songsCount: 32, image: "https://picsum.photos/400/400?random=4", verified: true, followers: 125000 },
-    { id: 2, name: "Guns N' Roses", songsCount: 28, image: "https://picsum.photos/400/400?random=5", verified: true, followers: 98000 },
-    { id: 3, name: "Édith Piaf", songsCount: 15, image: "https://picsum.photos/400/400?random=6", verified: false, followers: 67000 }
+    { id: 1, name: "Angélique Kidjo", songsCount: 32, image: "./angelik.webp", verified: true, followers: 125000 },
+    { id: 2, name: "Danialou", songsCount: 28, image: "./dani.webp", verified: true, followers: 98000 },
+    { id: 3, name: "Zeynab", songsCount: 15, image: "./zey.jpg", verified: false, followers: 67000 }
   ]);
-  
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [isSticky, setIsSticky] = useState(false);
 
-   useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 10);
     };
@@ -741,49 +981,32 @@ export default function AdminDashboard() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const onSubmit = async (data) => {
-  try {
-    const response = await fetch('/api/songs', {
-      method: 'POST',
-      body: data,
-    });
-    const result = await response.json();
-    console.log('Succès:', result);
-    setIsAddModalOpen(false)
-  } catch (error) {
-    console.error('Erreur:', error);
-  }
-};
-
-  const filteredSongs = songs.filter(song => 
-    song.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    song.artist.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const filteredArtists = artists.filter(artist => 
-    artist.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleAddItem = (newItem) => {
+  const handleAddItem = (data) => {
     if (activeTab === 'songs') {
-      setSongs([...songs, { 
-        ...newItem, 
+      const newSong = {
         id: songs.length + 1,
-        image: newItem.image || `https://picsum.photos/400/400?random=${songs.length + 10}`,
+        title: data.get('title') || '',
+        artist: data.get('artist') || '',
+        genre: data.get('genre') || '',
+        duration: data.get('duration') || '',
+        image: data.get('imageFile') ? URL.createObjectURL(data.get('imageFile')) : `https://picsum.photos/400/400?random=${songs.length + 10}`,
+        song: data.get('audioFile') ? URL.createObjectURL(data.get('audioFile')) : './afric.mp3',
         color: ['#Face6b', '#3a5157'][Math.floor(Math.random() * 2)],
         plays: Math.floor(Math.random() * 10000),
         likes: Math.floor(Math.random() * 1000),
         trending: Math.random() > 0.5
-      }]);
+      };
+      setSongs([...songs, newSong]);
     } else {
-      setArtists([...artists, { 
-        ...newItem, 
-        id: artists.length + 1, 
+      const newArtist = {
+        id: artists.length + 1,
+        name: data.get('name') || '',
+        image: data.get('imageFile') ? URL.createObjectURL(data.get('imageFile')) : `https://picsum.photos/400/400?random=${artists.length + 20}`,
         songsCount: 0,
-        image: newItem.image || `https://picsum.photos/400/400?random=${artists.length + 20}`,
         verified: Math.random() > 0.5,
         followers: Math.floor(Math.random() * 100000)
-      }]);
+      };
+      setArtists([...artists, newArtist]);
     }
     setIsAddModalOpen(false);
   };
@@ -805,10 +1028,19 @@ export default function AdminDashboard() {
     }
   };
 
+  const filteredSongs = songs.filter(song =>
+    song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    song.artist.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredArtists = artists.filter(artist =>
+    artist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Sidebar */}
-      <Sidebar 
+      <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         setViewMode={setViewMode}
@@ -820,7 +1052,7 @@ export default function AdminDashboard() {
       <div className={`main-content ${sidebarCollapsed ? 'collapsed' : ''} w-full flex-1 transition-all duration-300 overflow-y-auto z-30`}>
         <div className="h-full flex flex-col">
           {/* Header */}
-          <Header 
+          <Header
             activeTab={activeTab}
             viewMode={viewMode}
             setViewMode={setViewMode}
@@ -840,7 +1072,7 @@ export default function AdminDashboard() {
             )}
 
             {activeTab === 'songs' && (
-              <SongsContent 
+              <SongsContent
                 songs={filteredSongs}
                 viewMode={viewMode}
                 onEdit={(song) => {
@@ -852,7 +1084,7 @@ export default function AdminDashboard() {
             )}
 
             {activeTab === 'artists' && (
-              <ArtistsContent 
+              <ArtistsContent
                 artists={filteredArtists}
                 viewMode={viewMode}
                 onEdit={(artist) => {
@@ -876,7 +1108,7 @@ export default function AdminDashboard() {
 
       {/* Modals */}
       {isAddModalOpen && (
-        <AddEditModal 
+        <AddEditModal
           type={activeTab}
           onClose={() => setIsAddModalOpen(false)}
           onSubmit={handleAddItem}
@@ -884,7 +1116,7 @@ export default function AdminDashboard() {
       )}
 
       {isEditModalOpen && (
-        <AddEditModal 
+        <AddEditModal
           type={activeTab}
           item={currentItem}
           onClose={() => setIsEditModalOpen(false)}
