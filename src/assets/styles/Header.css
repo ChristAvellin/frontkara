@@ -108,11 +108,6 @@
   font-style: italic;
 }
 
-.only-search {
-    background-color: red;
-    margin-right: 4rem;
-}
-
 .search-input:hover {
   border-color: #3a5157;
   background: linear-gradient(to right, #fff, #f0f0f0);

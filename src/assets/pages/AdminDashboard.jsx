@@ -741,6 +741,20 @@ export default function AdminDashboard() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const onSubmit = async (data) => {
+  try {
+    const response = await fetch('/api/songs', {
+      method: 'POST',
+      body: data,
+    });
+    const result = await response.json();
+    console.log('Succès:', result);
+    setIsAddModalOpen(false)
+  } catch (error) {
+    console.error('Erreur:', error);
+  }
+};
+
   const filteredSongs = songs.filter(song => 
     song.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
     song.artist.toLowerCase().includes(searchTerm.toLowerCase())

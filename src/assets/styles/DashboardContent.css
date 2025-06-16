@@ -264,6 +264,10 @@
   color: #666;
 }
 
+.submit-button {
+    background-color: #3a5157;
+}
+
 .overlay-modal {
     background-color: #00000040;
     transition: background-color .10s ease-in-out;
